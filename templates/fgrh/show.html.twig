@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fgrh{% endblock %}
+
+{% block body %}
+    <h1>Fgrh</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fgrh.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ fgrh.name }}</td>
+            </tr>
+            <tr>
+            <th>cat</th>
+                <td>{{ fgrh.cat }}</td>
+            </tr>
+                <th>File</th>
+                <td>{{ fgrh.file }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fgrh_index') }}">back to list</a>
+
+    <a href="{{ path('app_fgrh_edit', {'id': fgrh.id}) }}">edit</a>
+
+    {{ include('fgrh/_delete_form.html.twig') }}
+{% endblock %}

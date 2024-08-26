@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fgrh index{% endblock %}
+
+{% block body %}
+    <h1>Fgrh index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                 <th>cat</th>
+                <th>File</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fgrh in fgrhs %}
+            <tr>
+                <td>{{ fgrh.id }}</td>
+                <td>{{ fgrh.name }}</td>
+                  <td>{{ fgrh.cat }}</td>
+                <td>{{ fgrh.file }}</td>
+                <td>
+                    <a href="{{ path('app_fgrh_download', {'id': fgrh.id}) }}">download</a>
+                    <a href="{{ path('app_fgrh_edit', {'id': fgrh.id}) }}">edit</a>
+                    <a href="{{ path('app_fgrh_show', {'id': fgrh.id}) }}">show</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fgrh_new') }}">Create new</a>
+{% endblock %}

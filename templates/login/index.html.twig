@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Log in</h1>
+
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.message }}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {{ form(form) }}
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+{% endblock %}

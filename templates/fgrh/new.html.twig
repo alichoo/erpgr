@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fgrh{% endblock %}
+
+{% block body %}
+    <h1>Create new Fgrh</h1>
+
+    {{ include('fgrh/_form.html.twig') }}
+
+    <a href="{{ path('app_fgrh_index') }}">back to list</a>
+{% endblock %}

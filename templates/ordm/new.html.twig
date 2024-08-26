@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Ordm{% endblock %}
+
+{% block body %}
+    <h1>Create new Ordm</h1>
+
+    {{ include('ordm/_form.html.twig') }}
+
+    <a href="{{ path('app_ordm_index') }}">back to list</a>
+{% endblock %}
