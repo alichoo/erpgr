@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
         'name' => 'symfony/skeleton',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '0b61938e9ac3ca302a54cdd9e3415670d61c2d80',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'behat/transliterator' => array(
+            'pretty_version' => 'v1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => 'baac5873bac3749887d28ab68e2f74db3a4408af',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../behat/transliterator',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'doctrine/cache' => array(
             'pretty_version' => '2.2.0',
             'version' => '2.2.0.0',
@@ -25,6 +34,15 @@
             'reference' => 'd8af7f248c74f195f7347424600fd9e17b57af59',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/collections',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'doctrine/common' => array(
+            'pretty_version' => '3.4.4',
+            'version' => '3.4.4.0',
+            'reference' => '0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/common',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -136,6 +154,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'gedmo/doctrine-extensions' => array(
+            'pretty_version' => 'v3.16.1',
+            'version' => '3.16.1.0',
+            'reference' => 'e85560ed96f977b8c29428a99222cb2ef2f0e80d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gedmo/doctrine-extensions',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'nikic/php-parser' => array(
             'pretty_version' => 'v5.1.0',
             'version' => '5.1.0.0',
@@ -243,6 +270,15 @@
             'provided' => array(
                 0 => '1.0|2.0|3.0',
             ),
+        ),
+        'stof/doctrine-extensions-bundle' => array(
+            'pretty_version' => 'v1.12.0',
+            'version' => '1.12.0.0',
+            'reference' => '473ae65598fa4160654c350e139e20ee75d9a91a',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../stof/doctrine-extensions-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'symfony/asset' => array(
             'pretty_version' => 'v7.0.8',
@@ -671,9 +707,9 @@
             ),
         ),
         'symfony/skeleton' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '0b61938e9ac3ca302a54cdd9e3415670d61c2d80',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

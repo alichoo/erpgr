@@ -5,10 +5,11 @@ namespace App\Entity;
 
 use App\Repository\FgrhRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Entity\Timestampable;
 #[ORM\Entity(repositoryClass: FgrhRepository::class)]
 class Fgrh
 {
+    use Timestampable;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
