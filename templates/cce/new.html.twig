@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cce{% endblock %}
+
+{% block body %}
+    <h1>Create new Cce</h1>
+
+    {{ include('cce/_form.html.twig') }}
+
+    <a href="{{ path('app_cce_index') }}">back to list</a>
+{% endblock %}

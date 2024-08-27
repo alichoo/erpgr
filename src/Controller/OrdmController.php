@@ -6,6 +6,7 @@ use App\Entity\Ordm;
 use App\Form\OrdmType;
  
 use App\Repository\OrdmRepository;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\PHPWordService;
 use App\Entity\Fgrh;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
 
 #[Route('/ordm')]
 class OrdmController extends AbstractController
@@ -40,8 +43,7 @@ class OrdmController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $entityManager->persist($ordm);
-            $entityManager->flush();
+           
            
           $ordmfi= $entityManager->getRepository(Fgrh::class)->findOneBy(['cat'=>'11']);
           if($ordmfi){
@@ -56,10 +58,16 @@ class OrdmController extends AbstractController
             $ppp->setValue('sigl','Zarsis');
 
             $ppp->setValue('datesig',date("d-m-Y"));
-            $ppp->saveAs($this->getParameter('uploads_directory') . '/ FRG_11_ORDM' .time().".docx");
+            $output='FRG_11_ORDM' .time().".docx";
+            $ppp->saveAs( $this->getParameter('uploads_directory') . '/'.$output); 
+            $ordm->setFile( $output);
+            $entityManager->persist($ordm);
+            $entityManager->flush();
+            return $this->redirectToRoute('ordm_download', ['filename' => $output]);
+
           }
        
-           
+         
           
 
             return $this->redirectToRoute('app_ordm_index', [], Response::HTTP_SEE_OTHER);
@@ -78,7 +86,25 @@ class OrdmController extends AbstractController
             'ordm' => $ordm,
         ]);
     }
+    #[Route('/ordm/download/{filename}', name: 'ordm_download')]
+    public function download(string $filename): BinaryFileResponse
+    {
+        // Get the full path of the file
+        $filePath = $this->getParameter('uploads_directory') . '/' . $filename;
 
+        // Check if the file exists
+        if (!file_exists($filePath)) {
+            throw $this->createNotFoundException('The file does not exist');
+        }
+
+        // Create a BinaryFileResponse to download the file
+        $response = new BinaryFileResponse($filePath);
+        
+        // Set the content disposition (attachment: forces download)
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
+
+        return $response;
+    }
     #[Route('/{id}/edit', name: 'app_ordm_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Ordm $ordm, EntityManagerInterface $entityManager): Response
     {

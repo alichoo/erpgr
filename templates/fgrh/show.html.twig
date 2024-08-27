@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fgrh{% endblock %}
+{% block title %}Formulaires{% endblock %}
 
 {% block body %}
-    <h1>Fgrh</h1>
+    <h1>Formulaire</h1>
 
     <table class="table">
         <tbody>
@@ -22,7 +22,11 @@
                 <th>File</th>
                 <td>{{ fgrh.file }}</td>
             </tr>
-
+            </tr>
+                <th>Date</th>
+               <td>{{ fgrh.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+ 
         </tbody>
     </table>
 

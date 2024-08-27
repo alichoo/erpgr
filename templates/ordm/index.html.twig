@@ -14,6 +14,7 @@
                 <th>Aut</th>
                 <th>Lieu</th>
                 <th>Mission</th>
+                 <th>Date</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,9 +27,15 @@
                 <td>{{ ordm.aut }}</td>
                 <td>{{ ordm.lieu }}</td>
                 <td>{{ ordm.mission }}</td>
+               <td>{{ ordm.createdAt|date('Y-m-d H:i:s') }}</td>
+
                 <td>
-                    <a href="{{ path('app_ordm_show', {'id': ordm.id}) }}">show</a>
-                    <a href="{{ path('app_ordm_edit', {'id': ordm.id}) }}">edit</a>
+                    <a href="{{ path('app_ordm_show', {'id': ordm.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('app_ordm_edit', {'id': ordm.id}) }}" class="btn btn-success">edit</a>
+                    {% if ordm.file %}
+    <a href="{{ path('ordm_download', {'filename': ordm.file}) }}" class="btn btn-primary">Download File</a>
+{% endif %}
+
                 </td>
             </tr>
         {% else %}

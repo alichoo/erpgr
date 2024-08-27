@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cce index{% endblock %}
+
+{% block body %}
+    <h1>Cce index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomp</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cce in cces %}
+            <tr>
+                <td>{{ cce.id }}</td>
+                <td>{{ cce.nomp }}</td>
+                <td>{{ cce.createdAt ? cce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ cce.updatedAt ? cce.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                {% if cce.file %}
+    <a href="{{ path('ordm_download', {'filename': cce.file}) }}" class="btn btn-primary">Download File</a>
+{% endif %}
+                    <a href="{{ path('app_cce_show', {'id': cce.id}) }}">show</a>
+                    <a href="{{ path('app_cce_edit', {'id': cce.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cce_new') }}">Create new</a>
+{% endblock %}

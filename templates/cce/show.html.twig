@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cce{% endblock %}
+
+{% block body %}
+    <h1>Cce</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cce.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomp</th>
+                <td>{{ cce.nomp }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ cce.createdAt ? cce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ cce.updatedAt ? cce.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cce_index') }}">back to list</a>
+
+    <a href="{{ path('app_cce_edit', {'id': cce.id}) }}">edit</a>
+
+    {{ include('cce/_delete_form.html.twig') }}
+{% endblock %}
